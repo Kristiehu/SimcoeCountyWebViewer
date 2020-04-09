@@ -12,10 +12,14 @@ class ImmigrationServices extends Component {
     // CALL PARENT WITH CLOSE
     this.props.onClose();
   };
-
+  //comment here
   render() {
     return (
-      <PanelComponent onClose={this.onClose} name={this.props.name} type="themes">
+      <PanelComponent
+        onClose={this.onClose}
+        name={this.props.name}
+        type="themes"
+      >
         <div>Put your components in here.</div>
       </PanelComponent>
     );
