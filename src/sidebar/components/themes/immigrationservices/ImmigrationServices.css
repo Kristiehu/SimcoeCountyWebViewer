@@ -1,0 +1,9 @@
+.sc-theme-immigration-service-main-container {
+  padding: 5px;
+  position: absolute;
+  top: 103px;
+  width: 360px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  bottom: 0px;
+}
