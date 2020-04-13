@@ -1,9 +1,13 @@
 .sc-theme-immigration-service-main-container {
-  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: grey;
+  font-size: 12px;
+  border-bottom: gray;
+  padding: 10px;
   position: absolute;
-  top: 103px;
-  width: 360px;
+  border-spacing: 5px;
+  text-align: initial;
+  width: 350px;
   overflow-y: auto;
-  overflow-x: hidden;
-  bottom: 0px;
+  overflow-x: auto;
 }
