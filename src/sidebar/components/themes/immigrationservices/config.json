@@ -7,7 +7,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Settlement Services help newcomers get settled into Simcoe County. Many offer English language training. They can provide you with community information and guidance on starting work in Canada."
     },
@@ -18,7 +17,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Housing Support Agencies help people who are looking for affordable rental housing or at risk of losing their current housing. Housing Support Agencies can help you learn what is available in the County to help you obtain and retain housing."
     },
@@ -29,7 +27,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Employment Ontario Employment Services are available across the County of Simcoe to help newcomers look for a job, plan their careers, explore starting their own business and obtain referrals to community programs and services."
     },
@@ -40,7 +37,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Ontario Early Years Centres are meeting places for children up to the age of six and their parents and caregivers to take part in programs and activities together."
     },
@@ -51,7 +47,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Service Canada provides a range of services and programs for people living in Canada. This includes necessary documentation to live and work in Canada. Some of these programs and services are specific to newcomers to Canada."
     },
@@ -62,7 +57,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Service Ontario sites provides documentation, certifications, licenses, permits and information on the following services: drivers; vehicles; health; outdoor; home, land and personal property; identification and certificates; education and training."
     },
@@ -73,7 +67,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Libraries are a place to meet people in the community. They have books, magazines, audiovisual, software and digital materials that you can borrow. Access to computers Computer and internet is available. Libraries also have helpful information about services and resources nearby and can help you find volunteer opportunities."
     },
@@ -84,7 +77,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Hospitals provide emergency medical care. A doctor may also refer you to a hospital for specific medical supports and care."
     },
@@ -95,7 +87,6 @@
       "clickable": true,
       "legendStyleName": "",
       "visible": true,
-      "boxStyle": true,
       "expanded": false,
       "description": "Community Health Centres offer non-emergency health care and health promotion. A Community Health Centre is a good choice for people without a health care provider, newcomers to Canada or people without health insurance in Ontario."
     }
