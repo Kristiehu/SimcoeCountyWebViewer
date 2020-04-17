@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import "./ThemeData.css";
 import * as helpers from "../../../../helpers/helpers";
-import ThemeDataList from "./ThemeDataList.jsx";
+import ThemeDataList from "../themeComponents/ThemeDataList.jsx";
 
-class ThemeData extends Component {
+class ImmigrationData extends Component {
   constructor(props) {
     super(props);
 
@@ -58,4 +57,4 @@ class ThemeData extends Component {
   }
 }
 
-export default ThemeData;
+export default ImmigrationData;

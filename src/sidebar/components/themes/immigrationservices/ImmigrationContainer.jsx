@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ThemeLayers from "../themeComponents/ThemeLayers.jsx";
 import * as helpers from "../../../../helpers/helpers";
 import ImmigrationLayers from "./ImmigrationLayers.jsx";
+import ImmigrationData from "./ImmigrationData.jsx";
 import ThemeData from "../themeComponents/ThemeData.jsx";
 
 class ImmigrationContainer extends Component {
