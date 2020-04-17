@@ -7,7 +7,8 @@
   position: absolute;
   border-spacing: 5px;
   text-align: initial;
-  width: 350px;
+  height: 1100px;
+  width: 330px;
   overflow-y: auto;
   overflow-x: auto;
 }
