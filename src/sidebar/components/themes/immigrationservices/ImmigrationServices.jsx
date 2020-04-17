@@ -3,7 +3,6 @@ import "./ImmigrationServices.css";
 import * as helpers from "../../../../helpers/helpers";
 import * as config from "./config.json";
 import PanelComponent from "../../../PanelComponent";
-import ThemeContainer from "../themeComponents/ThemeContainer.jsx";
 import ImmigrationContainer from "./ImmigrationContainer.jsx";
 // import url from "url";
 // import GeoJSON from "ol/format/GeoJSON.js";
@@ -19,25 +18,6 @@ class ImmigrationServices extends Component {
     // CALL PARENT WITH CLOSE
     this.props.onClose();
   };
-
-  // initLayer = () => {
-  //   // GET LAYER
-  //   const layer = helpers.getImageWMSLayer(
-  //     url.resolve(this.props.config.serverUrl, "wms"),
-  //     this.props.config.layerName,
-  //     "geoserver",
-  //     null,
-  //     50
-  //   );
-  //   layer.setVisible(this.props.config.visible);
-  //   layer.setZIndex(this.props.config.zIndex);
-  //   layer.setProperties({
-  //     name: this.props.config.layerName,
-  //     disableParcelClick: true,
-  //   });
-  //   window.map.addLayer(layer);
-  //   return layer;
-  // };
 
   render() {
     return (
