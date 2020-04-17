@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ThemeLayers from "../themeComponents/ThemeLayers.jsx";
 import * as helpers from "../../../../helpers/helpers";
-import ImmigrationLayers from "./ImmigrationLayers";
+import ImmigrationLayers from "./ImmigrationLayers.jsx";
+import ThemeData from "../themeComponents/ThemeData.jsx";
 
-class Container extends Component {
+class ImmigrationContainer extends Component {
   state = {};
 
   // CALLED FROM LAYERS.  CALL THEME DATA THROUGH A REF TO PASS ON THE CHANGE FOR VISIBLITY
@@ -31,9 +32,15 @@ class Container extends Component {
             this.onLayerVisibilityChange(layer);
           }}
         />
+        <ThemeData
+          config={this.props.config}
+          ref={(data) => {
+            this.data = data;
+          }}
+        />
       </div>
     );
   }
 }
 
-export default Container;
+export default ImmigrationContainer;
