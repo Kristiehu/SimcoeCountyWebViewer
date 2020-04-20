@@ -1,11 +1,11 @@
 .sc-theme-immigration-service-main-container {
   font-family: Arial, Helvetica, sans-serif;
   color: grey;
-  font-size: 13px;
+  font-size: 12px;
   border-bottom: gray;
-  padding: 20px;
+  padding: 5px;
   position: absolute;
-  border-spacing: 5px;
+  /* border-spacing: 5px; */
   text-align: initial;
   height: 550px;
   width: 330px;
@@ -13,7 +13,6 @@
   overflow-x: auto;
 }
 
-,
 .sc-immigration-container {
   position: absolute;
   overflow: auto;
@@ -21,3 +20,31 @@
   bottom: 0px;
   width: 97%;
 }
+
+/* .sc-immigration-data-list-header {
+  padding-right: 10px;
+  color: #373737;
+  font-weight: bold;
+  font-size: 14px;
+  background-image: url(information.png.png);
+  background-position: right center;
+  background-repeat: no-repeat;
+  display: table;
+  background-color: #c9e7f9;
+  width: 97%;
+  height: 40px;
+  border: 1px solid #ddd;
+  background-position-x: 96%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sc-immigration-data-list-header.open {
+  background-image: url(information.png.png);
+}
+
+.sc-immigration-data-list-container {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-bottom: 5px;
+} */
