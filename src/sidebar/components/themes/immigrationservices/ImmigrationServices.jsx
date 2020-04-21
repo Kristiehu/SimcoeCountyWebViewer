@@ -30,7 +30,6 @@ class ImmigrationServices extends Component {
           Explore resources to help newcomers: housing support services,
           settlement services, Employment Ontario services, libraries, an
           Ontario Early Years centres, Service Ontario and Service Canada.
-          <div className="sc-title sc-underline">SUPPORT SERVICES</div>
           <ImmigrationContainer config={config.default} />
         </div>
       </PanelComponent>
