@@ -133,17 +133,7 @@ class ImmigrationDataList extends Component {
               : "sc-hidden"
           }
         >
-          {this.state.features.map((feature) => (
-            <InfoRowValue
-              className="sc-immigration-data-list-item"
-              key={helpers.getUID()}
-              value={
-                feature.getProperties()[this.props.layerConfig.description]
-              }
-              onClick={this.itemClick}
-              feature={feature}
-            />
-          ))}
+          {this.props.layerConfig.description}
         </div>
       </div>
     );
