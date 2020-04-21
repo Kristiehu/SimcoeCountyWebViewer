@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import ThemeLayers from "../themeComponents/ThemeLayers.jsx";
+import "./ImmigrationServices.css";
 import * as helpers from "../../../../helpers/helpers";
 import ImmigrationLayers from "./ImmigrationLayers.jsx";
 import ImmigrationData from "./ImmigrationData.jsx";
-import ThemeData from "../themeComponents/ThemeData.jsx";
+//import ThemeData from "../themeComponents/ThemeData.jsx";
 
 class ImmigrationContainer extends Component {
-  state = {};
+  state = { onlyFeaturesWithinMap: false };
 
   // CALLED FROM LAYERS.  CALL THEME DATA THROUGH A REF TO PASS ON THE CHANGE FOR VISIBLITY
   onLayerVisibilityChange = (layer) => {
     this.data.onLayerVisibilityChange(layer);
   };
 
-  componentDidMount() {
-    // DISABLE PARCEL CLICK
-    //if (this.props.config.disableParcelClick !== undefined && this.props.config.disableParcelClick)
-    //window.disableParcelClick = true;
-  }
+  onCheckboxChange = (evt) => {
+    this.setState({ onlyFeaturesWithinMap: evt.target.checked });
+  };
 
   componentWillUnmount() {
     // RE-ENABLE PARCEL CLICK
@@ -26,14 +24,14 @@ class ImmigrationContainer extends Component {
 
   render() {
     return (
-      <div className="sc-theme-container">
+      <div className="sc-immigration-container">
         <ImmigrationLayers
           config={this.props.config}
           onLayerVisiblityChange={(layer) => {
             this.onLayerVisibilityChange(layer);
           }}
         />
-        <ThemeData
+        <ImmigrationData
           config={this.props.config}
           ref={(data) => {
             this.data = data;

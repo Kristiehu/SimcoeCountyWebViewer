@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as helpers from "../../../../helpers/helpers";
-import ThemeDataList from "../themeComponents/ThemeDataList.jsx";
+import ImmigrationDataList from "./ImmigrationDataList";
 
 class ImmigrationData extends Component {
   constructor(props) {
@@ -28,20 +28,10 @@ class ImmigrationData extends Component {
     return (
       <div className="sc-theme-data-container">
         {/* <div className="sc-title sc-underline">THEME DATA</div> */}
-        <div className="sc-theme-data-filter-label">
-          <label>
-            <input
-              type="checkbox"
-              checked={this.state.visible}
-              style={{ verticalAlign: "middle" }}
-              onChange={this.onCheckboxChange}
-            />
-            Only show data visible in the map
-          </label>
-        </div>
+
         <div>
           {this.props.config.toggleLayers.map((layerConfig) => (
-            <ThemeDataList
+            <ImmigrationDataList
               key={helpers.getUID()}
               config={this.props.config}
               layerConfig={layerConfig}
