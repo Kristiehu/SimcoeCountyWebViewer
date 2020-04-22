@@ -18,6 +18,6 @@ const ImmigrationLayers = (props) => {
       </div>
     </div>
   );
-},
+};
 
 export default ImmigrationLayers;
