@@ -31,12 +31,12 @@ class ImmigrationContainer extends Component {
             this.onLayerVisibilityChange(layer);
           }}
         />
-        <ImmigrationData
+        {/* <ImmigrationData
           config={this.props.config}
           ref={(data) => {
             this.data = data;
           }}
-        />
+        /> */}
       </div>
     );
   }

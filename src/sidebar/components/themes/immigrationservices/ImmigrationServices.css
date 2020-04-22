@@ -9,7 +9,7 @@
   border-spacing: 5px;
   text-align: initial;
   height: 85%;
-  width: 100%;
+  width: 95%;
   overflow-y: auto;
   overflow-x: auto;
   padding-left: 10px;
@@ -96,11 +96,7 @@
   padding-left: 10px;
 }
 
-.sc-immigration-data-list-header-symbol {
-  /* vertical-align: middle;
-  display: table-cell;
-  width: 11%; */
-
+/* .sc-immigration-data-list-header {
   background: rgba(0, 0, 0, 0) -webkit-linear-gradient(
       top,
       rgba(242, 245, 246, 1) 0%,
@@ -113,13 +109,19 @@
       rgba(230, 230, 230, 1) 100%
     )
     repeat scroll 0 0;
-  /* border: 1px solid #ccc;
-  border-radius: 3px; */
+  border: 1px solid #ccc;
+  border-radius: 3px; 
   text-align: center;
   vertical-align: middle;
   width: 30px;
   height: 30px;
   display: table-cell;
+} */
+
+.sc-immigration-data-list-header-symbol {
+  vertical-align: middle;
+  display: table-cell;
+  width: 11%;
 }
 
 .sc-immigration-data-list-item {
