@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "./ImmigrationServices.css";
 import * as helpers from "../../../../helpers/helpers";
 import ImmigrationLayers from "./ImmigrationLayers.jsx";
-import ImmigrationData from "./ImmigrationData.jsx";
-//import ThemeData from "../themeComponents/ThemeData.jsx";
+// import ImmigrationData from "./ImmigrationData.jsx";
 
 class ImmigrationContainer extends Component {
   state = { onlyFeaturesWithinMap: false };
