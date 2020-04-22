@@ -1,6 +1,6 @@
 import React from "react";
 import * as helpers from "../../../../helpers/helpers";
-import ThemeLayerToggler from "../themeComponents/ThemeLayerToggler.jsx";
+import ImmigrationLayerToggler from "./ImmigrationLayerToggler";
 
 const ImmigrationLayers = (props) => {
   return (
@@ -8,7 +8,7 @@ const ImmigrationLayers = (props) => {
       <div className="sc-title sc-underline">SUPPORT SERVICES</div>
       <div className="sc-container">
         {props.config.toggleLayers.map((layerConfig) => (
-          <ThemeLayerToggler
+          <ImmigrationLayerToggler
             key={helpers.getUID()}
             layerConfig={layerConfig}
             config={props.config}

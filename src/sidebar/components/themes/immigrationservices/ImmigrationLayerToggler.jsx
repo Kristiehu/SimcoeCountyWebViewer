@@ -16,6 +16,9 @@ class ImmigrationLayerToggler extends Component {
       layer: this.initLayer(),
       styleUrl: null,
       recordCount: null,
+      panelOpen: props.layerConfig.expanded,
+      features: [],
+      onlyFeaturesWithinMap: props.onlyFeaturesWithinMap,
     };
   }
 
@@ -134,6 +137,14 @@ class ImmigrationLayerToggler extends Component {
 
     // URL PARAMETERS
     this.handleUrlParameter();
+
+    // Immigration Data List==============================================
+    this._isMounted = true;
+
+    // GET FEATURES
+    this.fetchFeatures();
+
+    // Immigration Data List==============================================
   }
 
   onCheckboxChange = (evt) => {
@@ -142,59 +153,136 @@ class ImmigrationLayerToggler extends Component {
     this.props.onLayerVisiblityChange(this.state.layer);
   };
 
+  // Immigration Data List==============================================
+
+  fetchFeatures = () => {
+    if (!this._isMounted) return;
+
+    if (this.state.onlyFeaturesWithinMap) {
+      const extent = window.map.getView().calculateExtent();
+      helpers.getWFSGeoJSON(
+        this.props.layerConfig.serverUrl,
+        this.props.layerConfig.layerName,
+        (result) => {
+          this.setState({ features: result });
+        },
+        this.props.layerConfig.displayFieldName,
+        extent
+      );
+    } else {
+      helpers.getWFSGeoJSON(
+        this.props.layerConfig.serverUrl,
+        this.props.layerConfig.layerName,
+        (result) => {
+          this.setState({ features: result });
+        },
+        this.props.layerConfig.displayFieldName
+      );
+    }
+  };
+
+  onHeaderClick = () => {
+    this.setState({ panelOpen: !this.state.panelOpen });
+  };
+
+  itemClick = (feature) => {
+    helpers.getGeometryCenter(feature.getGeometry(), (center) => {
+      // SHOW POPUP
+      const entries = Object.entries(feature.getProperties());
+      window.popup.show(
+        center.flatCoordinates,
+        <ThemePopupContent
+          key={helpers.getUID()}
+          values={entries}
+          popupLogoImage={this.props.config.popupLogoImage}
+          layerConfig={this.props.layerConfig}
+        />
+      );
+      helpers.zoomToFeature(feature, false);
+      window.map.getView().setZoom(15);
+    });
+  };
+  // HANDLES TOGGLE LAYER CHANGES
+  onLayerVisibilityChange = (layer) => {
+    if (layer.getProperties().name === this.props.layerConfig.layerName)
+      this.setState({ visible: layer.getVisible() });
+  };
+  // Immigration Data List==============================================
+
   componentWillUnmount() {
     // CLEAN UP
     window.map.removeLayer(this.state.layer);
     unByKey(this.mapClickEvent);
+    this._isMounted = false;
   }
 
   render() {
     return (
-      <div className="sc-immigration-layer-container">
+      <div
+        className={
+          this.state.visible
+            ? "sc-immigration-data-list-container"
+            : "sc-hidden"
+        }
+      >
         <div
           className={
-            this.props.layerConfig.boxStyle === undefined ||
-            !this.props.layerConfig.boxStyle
-              ? "sc-theme-layer-toggler-symbol"
-              : "sc-theme-layer-toggler-symbol-with-box"
+            this.state.panelOpen
+              ? "sc-immigration-data-list-header open"
+              : "sc-immigration-data-list-header"
           }
+          onClick={this.onHeaderClick}
         >
-          <img src={this.state.styleUrl} alt="style" />
-        </div>
-        <div
-          className={
-            this.props.layerConfig.boxStyle === undefined ||
-            !this.props.layerConfig.boxStyle
-              ? ""
-              : "sc-theme-layer-toggler-label-with-box-container"
-          }
-        >
-          <label
+          <div className="sc-immigration-data-list-header-symbol">
+            <img src={this.state.styleUrl} alt="style" />
+          </div>
+          <div
             className={
               this.props.layerConfig.boxStyle === undefined ||
               !this.props.layerConfig.boxStyle
-                ? "sc-theme-layer-toggler-label"
-                : "sc-theme-layer-toggler-label-with-box"
+                ? ""
+                : "sc-immigration-layer-toggler-label-with-box-container"
             }
           >
-            <input
-              type="checkbox"
-              checked={this.state.visible}
-              style={{ verticalAlign: "middle" }}
-              onChange={this.onCheckboxChange}
-            />
-            {this.props.layerConfig.displayName}
-          </label>
-          <label
+            <label
+              className={
+                this.props.layerConfig.boxStyle === undefined ||
+                !this.props.layerConfig.boxStyle
+                  ? "sc-immigration-layer-toggler-label"
+                  : "sc-immigration-layer-toggler-label-with-box"
+              }
+            >
+              <input
+                type="checkbox"
+                checked={this.state.visible}
+                style={{ verticalAlign: "middle" }}
+                onChange={this.onCheckboxChange}
+              />
+              {this.props.layerConfig.displayName}
+            </label>
+            {/* <div style={{ paddingTop: "12px", width: "90%" }}>
+              {this.props.layerConfig.displayName}
+            </div> */}
+            <label
+              className={
+                this.props.layerConfig.boxStyle === undefined ||
+                !this.props.layerConfig.boxStyle
+                  ? "sc-immigration-layer-toggler-count"
+                  : "sc-immigration-layer-toggler-count-with-box"
+              }
+            >
+              {" (" + this.state.recordCount + ")"}
+            </label>
+          </div>
+          <div
             className={
-              this.props.layerConfig.boxStyle === undefined ||
-              !this.props.layerConfig.boxStyle
-                ? "sc-theme-layer-toggler-count"
-                : "sc-theme-layer-toggler-count-with-box"
+              this.state.panelOpen
+                ? "sc-immigration-data-list-item-container"
+                : "sc-hidden"
             }
           >
-            {" (" + this.state.recordCount + ")"}
-          </label>
+            {this.props.layerConfig.description}
+          </div>
         </div>
 
         <div>{this.props.children}</div>
