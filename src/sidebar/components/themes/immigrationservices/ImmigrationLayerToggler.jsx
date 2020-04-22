@@ -202,11 +202,7 @@ class ImmigrationLayerToggler extends Component {
       window.map.getView().setZoom(15);
     });
   };
-  // HANDLES TOGGLE LAYER CHANGES
-  onLayerVisibilityChange = (layer) => {
-    if (layer.getProperties().name === this.props.layerConfig.layerName)
-      this.setState({ visible: layer.getVisible() });
-  };
+
   // Immigration Data List==============================================
 
   componentWillUnmount() {
@@ -285,7 +281,7 @@ class ImmigrationLayerToggler extends Component {
           </div>
         </div>
 
-        <div>{this.props.children}</div>
+        {/* <div>{this.props.children}</div> */}
       </div>
     );
   }
