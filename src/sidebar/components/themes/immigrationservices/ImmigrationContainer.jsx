@@ -35,8 +35,7 @@ class ImmigrationContainer extends Component {
           config={this.props.config}
           ref={(data) => {
             this.data = data;
-          }}
-        /> */}
+          }}/> */}
       </div>
     );
   }
