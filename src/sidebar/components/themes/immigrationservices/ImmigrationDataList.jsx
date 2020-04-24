@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./ImmigrationServices.css";
 import * as helpers from "../../../../helpers/helpers";
-import { InfoRowValue } from "../../../../helpers/InfoRow.jsx";
 import ThemePopupContent from "../themeComponents/ThemePopupContent";
 
 class ImmigrationDataList extends Component {
@@ -91,12 +90,6 @@ class ImmigrationDataList extends Component {
       helpers.zoomToFeature(feature, false);
       window.map.getView().setZoom(15);
     });
-  };
-
-  // HANDLES TOGGLE LAYER CHANGES
-  onLayerVisibilityChange = (layer) => {
-    if (layer.getProperties().name === this.props.layerConfig.layerName)
-      this.setState({ visible: layer.getVisible() });
   };
 
   render() {

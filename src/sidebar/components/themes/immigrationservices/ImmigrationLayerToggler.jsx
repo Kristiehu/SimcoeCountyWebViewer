@@ -4,8 +4,9 @@ import * as helpers from "../../../../helpers/helpers";
 import ThemePopupContent from "../themeComponents/ThemePopupContent";
 import url from "url";
 import GeoJSON from "ol/format/GeoJSON.js";
-import { getCenter } from "ol/extent";
 import { unByKey } from "ol/Observable.js";
+import information from "./information.png";
+import Collapsible from "react-collapsible";
 
 class ImmigrationLayerToggler extends Component {
   constructor(props) {
@@ -17,51 +18,11 @@ class ImmigrationLayerToggler extends Component {
       styleUrl: null,
       recordCount: null,
       panelOpen: props.layerConfig.expanded,
-      features: [],
-      onlyFeaturesWithinMap: props.onlyFeaturesWithinMap,
     };
   }
 
-  handleUrlParameter = () => {
-    if (this.props.layerConfig.UrlParameter === undefined) return;
-
-    const urlParam = helpers.getURLParameter(
-      this.props.layerConfig.UrlParameter.parameterName
-    );
-    if (urlParam === null) return;
-
-    const query =
-      this.props.layerConfig.UrlParameter.fieldName + "=" + urlParam;
-    helpers.getWFSGeoJSON(
-      this.props.layerConfig.serverUrl,
-      this.props.layerConfig.layerName,
-      (result) => {
-        if (result.length === 0) return;
-
-        const feature = result[0];
-        const extent = feature.getGeometry().getExtent();
-        const center = getCenter(extent);
-        helpers.zoomToFeature(feature);
-        const entries = Object.entries(feature.getProperties());
-        window.popup.show(
-          center,
-          <ThemePopupContent
-            key={helpers.getUID()}
-            values={entries}
-            popupLogoImage={this.props.mainConfig.popupLogoImage}
-            layerConfig={this.props.layerConfig}
-          />,
-          this.props.layerConfig.displayName
-        );
-      },
-      null,
-      null,
-      query
-    );
-  };
-
+  // GET LAYER
   initLayer = () => {
-    // GET LAYER
     const layer = helpers.getImageWMSLayer(
       url.resolve(this.props.layerConfig.serverUrl, "wms"),
       this.props.layerConfig.layerName,
@@ -79,8 +40,9 @@ class ImmigrationLayerToggler extends Component {
     return layer;
   };
 
+  // GET LEGEND & RECORD COUNT
   componentDidMount() {
-    // GET LEGEND
+    // LEGEND
     const styleUrlTemplate = (serverURL, layerName, styleName) =>
       `${serverURL}/wms?REQUEST=GetLegendGraphic&VERSION=1.1&FORMAT=image/png&WIDTH=20&HEIGHT=20&TRANSPARENT=true&LAYER=${layerName}&STYLE=${
         styleName === undefined ? "" : styleName
@@ -92,7 +54,7 @@ class ImmigrationLayerToggler extends Component {
     );
     this.setState({ styleUrl: styleUrl });
 
-    // GET RECORD COUNT
+    // RECORD COUNT
     helpers.getWFSLayerRecordCount(
       this.props.layerConfig.serverUrl,
       this.props.layerConfig.layerName,
@@ -116,10 +78,8 @@ class ImmigrationLayerToggler extends Component {
           if (features.length === 0) {
             return;
           }
-
           const geoJSON = new GeoJSON().readFeatures(result);
           const feature = geoJSON[0];
-
           const entries = Object.entries(feature.getProperties());
           window.popup.show(
             evt.coordinate,
@@ -135,56 +95,21 @@ class ImmigrationLayerToggler extends Component {
       }
     });
 
-    // URL PARAMETERS
-    this.handleUrlParameter();
-
-    // Immigration Data List==============================================
-    this._isMounted = true;
-
-    // GET FEATURES
-    this.fetchFeatures();
-
-    // Immigration Data List==============================================
+    // this._isMounted = false;
   }
 
+  // TURN ON/OFF THE LAYERS
   onCheckboxChange = (evt) => {
     this.setState({ visible: evt.target.checked });
     this.state.layer.setVisible(evt.target.checked);
-    this.props.onLayerVisiblityChange(this.state.layer);
   };
 
-  // Immigration Data List==============================================
-
-  fetchFeatures = () => {
-    if (!this._isMounted) return;
-
-    if (this.state.onlyFeaturesWithinMap) {
-      const extent = window.map.getView().calculateExtent();
-      helpers.getWFSGeoJSON(
-        this.props.layerConfig.serverUrl,
-        this.props.layerConfig.layerName,
-        (result) => {
-          this.setState({ features: result });
-        },
-        this.props.layerConfig.displayFieldName,
-        extent
-      );
-    } else {
-      helpers.getWFSGeoJSON(
-        this.props.layerConfig.serverUrl,
-        this.props.layerConfig.layerName,
-        (result) => {
-          this.setState({ features: result });
-        },
-        this.props.layerConfig.displayFieldName
-      );
-    }
-  };
-
+  // ON LAYER HEADER CLICK
   onHeaderClick = () => {
     this.setState({ panelOpen: !this.state.panelOpen });
   };
 
+  // ON MAP WINDOW CLICK
   itemClick = (feature) => {
     helpers.getGeometryCenter(feature.getGeometry(), (center) => {
       // SHOW POPUP
@@ -203,10 +128,8 @@ class ImmigrationLayerToggler extends Component {
     });
   };
 
-  // Immigration Data List==============================================
-
+  // REMOVE THE LAYERS ONCE CLOSE THE PANEL
   componentWillUnmount() {
-    // CLEAN UP
     window.map.removeLayer(this.state.layer);
     unByKey(this.mapClickEvent);
     this._isMounted = false;
@@ -256,9 +179,6 @@ class ImmigrationLayerToggler extends Component {
               />
               {this.props.layerConfig.displayName}
             </label>
-            {/* <div style={{ paddingTop: "12px", width: "90%" }}>
-              {this.props.layerConfig.displayName}
-            </div> */}
             <label
               className={
                 this.props.layerConfig.boxStyle === undefined ||
@@ -268,6 +188,9 @@ class ImmigrationLayerToggler extends Component {
               }
             >
               {" (" + this.state.recordCount + ")"}
+            </label>
+            <label className="sc-immigration-layer-icon">
+              <img src={information} alt="informationicon" />
             </label>
           </div>
           <div
@@ -280,8 +203,6 @@ class ImmigrationLayerToggler extends Component {
             {this.props.layerConfig.description}
           </div>
         </div>
-
-        {/* <div>{this.props.children}</div> */}
       </div>
     );
   }
