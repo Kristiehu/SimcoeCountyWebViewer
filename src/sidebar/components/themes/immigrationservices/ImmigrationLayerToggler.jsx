@@ -143,9 +143,6 @@ class ImmigrationLayerToggler extends Component {
           }
           onClick={this.onHeaderClick}
         >
-          <div className="sc-immigration-data-list-header-symbol">
-            <img src={this.state.styleUrl} alt="style" />
-          </div>
           <div
             className={
               this.props.layerConfig.boxStyle === undefined ||
@@ -154,6 +151,9 @@ class ImmigrationLayerToggler extends Component {
                 : "sc-immigration-layer-toggler-label-with-box-container"
             }
           >
+            <label>
+              <img src={this.state.styleUrl} alt="style" />
+            </label>
             <label
               className={
                 this.props.layerConfig.boxStyle === undefined ||

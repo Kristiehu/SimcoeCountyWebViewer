@@ -5,7 +5,7 @@ import ImmigrationLayerToggler from "./ImmigrationLayerToggler";
 const ImmigrationLayers = (props) => {
   return (
     <div className="sc-theme-layers-container">
-      <div className="sc-title sc-underline">SUPPORT SERVICES</div>
+      <div className="sc-title sc-underline">Support Service</div>
       <div className="sc-container">
         {props.config.toggleLayers.map((layerConfig) => (
           <ImmigrationLayerToggler
