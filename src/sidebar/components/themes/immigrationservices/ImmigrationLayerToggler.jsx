@@ -6,7 +6,6 @@ import url from "url";
 import GeoJSON from "ol/format/GeoJSON.js";
 import { unByKey } from "ol/Observable.js";
 import information from "./information.png";
-import Collapsible from "react-collapsible";
 
 class ImmigrationLayerToggler extends Component {
   constructor(props) {
@@ -15,8 +14,6 @@ class ImmigrationLayerToggler extends Component {
     this.state = {
       visible: props.layerConfig.visible,
       layer: this.initLayer(),
-      styleUrl: null,
-      recordCount: null,
       panelOpen: props.layerConfig.expanded,
     };
   }
@@ -137,13 +134,7 @@ class ImmigrationLayerToggler extends Component {
 
   render() {
     return (
-      <div
-        className={
-          this.state.visible
-            ? "sc-immigration-data-list-container"
-            : "sc-hidden"
-        }
-      >
+      <div className={this.state.visible ? "" : "sc-hidden"}>
         <div
           className={
             this.state.panelOpen
@@ -167,8 +158,8 @@ class ImmigrationLayerToggler extends Component {
               className={
                 this.props.layerConfig.boxStyle === undefined ||
                 !this.props.layerConfig.boxStyle
-                  ? "sc-immigration-layer-toggler-label"
-                  : "sc-immigration-layer-toggler-label-with-box"
+                  ? ""
+                  : "sc-immigration-layer-toggler-label"
               }
             >
               <input
