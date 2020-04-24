@@ -1,18 +1,20 @@
-.sc-theme-immigration-service-main-container {
-  font-family: Verdana, Arial, sans-serif;
-  /* font-family: Arial, Helvetica, sans-serif; */
-  color: grey;
-  font-size: 12px;
+.sc-immigration-service-main-container {
   border-bottom: gray;
   padding: 5px;
   position: absolute;
   border-spacing: 5px;
-  text-align: initial;
   top: 108px;
   bottom: 0px;
   overflow-y: auto;
   overflow-x: auto;
   padding-left: 10px;
+}
+
+.sc-immigration-text-box {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 13px;
+  padding: 5px;
+  color: grey;
 }
 
 .sc-immigration-container {
