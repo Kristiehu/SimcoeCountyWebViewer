@@ -17,6 +17,12 @@
   color: grey;
 }
 
+.sc-immigration-layer-icon {
+  /* display: table-cell; */
+  float: right;
+  font-size: 10pt;
+}
+
 .sc-immigration-container {
   padding-bottom: 10px;
   padding-top: 10px;
@@ -28,36 +34,6 @@
   /* display: table-cell; */
   font-size: 10pt;
   width: 50%;
-}
-
-.sc-immigration-layer-toggler-label-with-box {
-  display: table-cell;
-  font-size: 9pt;
-  /* width: 70%; */
-  vertical-align: middle;
-}
-
-.sc-immigration-layer-icon {
-  /* display: table-cell; */
-  float: right;
-  font-size: 10pt;
-}
-
-.sc-immigration-layer-toggler-symbol {
-  width: 5%;
-  display: table-cell;
-  vertical-align: bottom;
-  text-align: center;
-}
-
-.sc-immigration-layer-toggler-symbol-with-box {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  text-align: center;
-  vertical-align: middle;
-  width: 30px;
-  height: 30px;
-  display: table-cell;
 }
 
 .sc-immigration-layer-toggler-label-with-box-container {
@@ -82,20 +58,10 @@
   padding: 3px;
 }
 
-.sc-immigration-data-list-header-symbol {
-  vertical-align: 5px;
-  display: table-cell;
-  width: 10%;
-}
-
 .sc-immigration-data-list-item {
   padding-top: 7px;
   font-size: 10pt;
   cursor: pointer;
-}
-
-.sc-immigration-data-list-item:hover {
-  background-color: #d3faff;
 }
 
 .sc-immigration-data-list-header {
