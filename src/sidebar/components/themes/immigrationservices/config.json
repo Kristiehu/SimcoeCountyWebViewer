@@ -25,7 +25,7 @@
     {
       "serverUrl": "https://opengis.simcoe.ca/geoserver/",
       "layerName": "simcoe:Ontario_Employment_Services_Centre",
-      "displayName": "Ontario Employment Services Centre",
+      "displayName": "Employment Services Centre",
       "clickable": true,
       "legendStyleName": "",
       "visible": true,

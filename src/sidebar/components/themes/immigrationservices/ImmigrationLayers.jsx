@@ -11,7 +11,7 @@ const ImmigrationLayers = (props) => {
           <ImmigrationLayerToggler
             key={helpers.getUID()}
             layerConfig={layerConfig}
-            config={props.config}
+            config={props.config} // for mapClickEvent interaction, not identical to layerConfig
             onLayerVisiblityChange={props.onLayerVisiblityChange}
           />
         ))}
@@ -19,6 +19,5 @@ const ImmigrationLayers = (props) => {
     </div>
   );
 };
-//push changes to github
 
 export default ImmigrationLayers;
