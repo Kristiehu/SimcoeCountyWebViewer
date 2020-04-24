@@ -19,10 +19,12 @@ class ImmigrationServices extends Component {
         name={this.props.name}
         type="themes"
       >
-        <div className="sc-theme-immigration-service-main-container">
-          Explore resources to help newcomers: housing support services,
-          settlement services, Employment Ontario services, libraries, an
-          Ontario Early Years centres, Service Ontario and Service Canada.
+        <div className="sc-immigration-service-main-container">
+          <div className="sc-immigration-text-box">
+            Explore resources to help newcomers: housing support services,
+            settlement services, Employment Ontario services, libraries, an
+            Ontario Early Years centres, Service Ontario and Service Canada.
+          </div>
           <ImmigrationContainer config={config.default} />
         </div>
       </PanelComponent>
